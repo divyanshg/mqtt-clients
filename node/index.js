@@ -9,7 +9,7 @@ const password = process.env.DIV_PASSWORD
 
 const connectUrl = `${protocol}://${host}:${port}`
 
-const testTopic = '$SDK/node/test'
+const testTopic = `${clientId}/$SDK/node/test`
 
 function init() {
     const client = mqtt.connect(connectUrl, {
@@ -30,7 +30,7 @@ function init() {
         const intervalId = setInterval(() => {
             // Publish a message
             client.publish(testTopic, JSON.stringify({
-                sequence: sentCount+1,
+                sequence: sentCount + 1,
             }));
             sentCount++;
 
